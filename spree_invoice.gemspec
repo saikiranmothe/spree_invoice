@@ -10,7 +10,6 @@ Gem::Specification.new do |s|
   s.author    = 'saikiran mothe'
   s.email     = 'saikiran.mothe@gmail.com'
   s.email     = 'sai.kiran@partheas.com'
-
   s.homepage  = 'http://partheas.com/'
 
   #s.files       = `git ls-files`.split("\n")
