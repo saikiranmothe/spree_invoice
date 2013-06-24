@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+		<% require "wicked_pdf" %>
+
+	<div id="wrapper">
+		<div id="header">
+			<%= wicked_pdf_image_tag(SpreeInvoice.invoice_seller_logo) %>
+		</div>
+		<div id="content">
+			<%= SpreeInvoice.inspect %>
+			<%= SpreeInvoice.invoice_seller_details %><br />
+			<%= @order.id %>
+			
+
+		Order ID	<%= @order.id %> <br>
+		Order Number	<%= @order.number %> <br>
+		Order Item Total	<%= @order.item_total  %> <br>
+		Customer Email	<%= @order.email %> <br>
+
+			<hr>
+
+			<%= @order.currency %> <br>
+			<%= @order.updated_at%> <br>
+			<%= @order.created_at %> <br>
+		</div>
+	</div>
+</body>
+</html>
