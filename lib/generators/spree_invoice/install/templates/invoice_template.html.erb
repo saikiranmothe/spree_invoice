@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ie ie6" lang="en"> <![endif]--><!--[if IE 7 ]>    <html class="ie ie7" lang="en"> <![endif]--><!--[if IE 8 ]>    <html class="ie ie8" lang="en"> <![endif]--><!--[if IE 9 ]>    <html class="ie ie9" lang="en"> <![endif]--><!--[if gt IE 9]><!--><html lang="en">
+<!--<![endif]--><head data-hook="admin_inside_head">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+<meta content="authenticity_token" name="csrf-param" />
+<meta content="J/wZIgZv+N7/XQXG0yfOE5Vozztt+PJKBGj8YLSGLZM=" name="csrf-token" />
+
+<title> Spree Order Invoice <%= @order.id %></title>
+
+ <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+</head>
+
+<body class="admin">
+
+ <header id="header"  data-hook>
+ 	<div class="page-title">
+ 	 <%= image_tag Spree::Config.admin_interface_logo %>
+   </div>
+   <hr>
+ </header>
+<div id="content-header">
+ <h1 class="page-title" style="text-align:center"> <%= @order.number %> Invoice</h1>
+</div>
+
+
+<table class="stock-contents index" data-hook="stock-contents">
+  <colgroup>
+    <col style="width: 10%;" />
+    <col style="width: 30%;" />
+    <col style="width: 15%;" />
+    <col style="width: 15%;" />
+    <col style="width: 15%;" />
+    <col style="width: 15%;" />
+  </colgroup>
+ <thead>
+    <th colspan="2">Item Description</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Total</th>
+      </thead>
+ <tbody>
+
+
+      <tr class="stock-item">
+        <td class="item-image">
+          <img alt="Ruby on Rails Bag" src="/spree/products/23/mini/ror_bag.jpeg?1371640957" />
+        	<%=image_tag @order.products.first.permalink%></td>
+        <td class="item-name">
+          <h3><%= @order.products.first.permalink%><h3> 
+        </td>
+        <td class="item-price align-center"><%= @order.currency %> &nbsp <%= @order.total.to_i %> </td>
+        <td class="item-qty-show align-center">
+            <%= @order.  %>    x on hand
+        </td>
+          <td class="item-qty-edit hidden">
+            <input class="line_item_quantity" id="quantity" min="0" name="quantity" size="5" type="number" value="1" />
+
+          </td>
+        <td class="item-total align-center">$22.99</td>
+          <td class="cart-item-delete actions" data-hook="cart_item_delete">
+              <a href="#" class="save-item icon_link icon-ok no-text with-tip" data-action="save" data-shipment-number="H77483814822" data-variant-id="2" style="display: none" title="Save"></a>
+              <a href="#" class="cancel-item icon_link icon-cancel no-text with-tip" data-action="cancel" style="display: none" title="Cancel"></a>
+              <a href="#" class="edit-item icon_link icon-edit no-text with-tip" data-action="edit" title="Edit"></a>
+              <a href="#" class="delete-item icon-trash no-text with-tip" data-action="remove" data-shipment-number="H77483814822" data-variant-id="2" title="Delete"></a>
+          </td>
+      </tr>
+
+      <tr class="edit-method hidden total">
+        <td colspan="5">
+          <div class="field alpha five columns">
+            <label for="selected_shipping_rate_id">Shipping Method</label>
+            <select class="select2 fullwidth" data-shipment-number="H77483814822" id="selected_shipping_rate_id" name="selected_shipping_rate_id"><option value="145" selected="selected">UPS Ground (USD) $5.00</option>
+<option value="146">UPS Two Day (USD) $10.00</option>
+<option value="147">UPS One Day (USD) $15.00</option></select>
+          </div>
+
+            <div class="field omega four columns">
+              <label>The associated adjustment is closed, and will not be recalculated. Do you want to open it?</label>
+              <ul>
+                <li><input data-shipment-number="H77483814822" id="open_adjustment_yes" name="open_adjustment" type="radio" value="yes" /> Yes</li>
+                <li><input checked="checked" data-shipment-number="H77483814822" id="open_adjustment_no" name="open_adjustment" type="radio" value="no" /> No</li>
+              </ul>
+            </div>
+        </td>
+        <td class="actions">
+            <a href="#" class="save-method icon_link icon-ok no-text with-tip" data-action="save" data-shipment-number="H77483814822" title="Save"></a>
+            <a href="#" class="cancel-method icon_link icon-cancel no-text with-tip" data-action="cancel" title="Cancel"></a>
+        </td>
+      </tr>
+
+    <tr class="show-method total">
+      <td colspan="4">
+          <strong>Shipping:</strong>
+      </td>
+      <td class="total" align="center">
+          <span>$5.00</span>
+      </td>
+        <td class="actions">
+            <a href="#" class="edit-method icon_link icon-edit no-text with-tip" data-action="edit" title="Edit"></a>
+        </td>
+    </tr>
+
+    <tr class="edit-tracking hidden total">
+      <td colspan="5">
+        <label>Tracking Number:</label>
+        <input id="tracking" name="tracking" type="text" />
+      </td>
+      <td class="actions">
+          <a href="#" class="save-tracking icon_link icon-ok no-text with-tip" data-action="save" data-shipment-number="H77483814822" title="Save"></a>
+          <a href="#" class="cancel-tracking icon_link icon-cancel no-text with-tip" data-action="cancel" title="Cancel"></a>
+      </td>
+    </tr>
+
+    <tr class="show-tracking total">
+      <td colspan="5">
+          No tracking details provided.
+      </td>
+      <td class="actions">
+          <a href="#" class="edit-tracking icon_link icon-edit no-text with-tip" data-action="edit" title="Edit"></a>
+      </td>
+    </tr>
+  </tbody>
+
+</body>
+</html>
